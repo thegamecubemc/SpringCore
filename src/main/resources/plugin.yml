@@ -1,0 +1,6 @@
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+author: SirFaizdat
+website: ${project.url}
+main: ml.springpoint.springcore.SpringCore
