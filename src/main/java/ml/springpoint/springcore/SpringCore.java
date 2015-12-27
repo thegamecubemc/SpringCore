@@ -3,5 +3,6 @@ package ml.springpoint.springcore;
 /**
  * @author SirFaizdat
  */
-public class SpringCore {
+public class SpringCore extends SpringPlugin {
+
 }
