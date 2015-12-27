@@ -1,5 +1,8 @@
 package ml.springpoint.springcore.feature;
 
+import ml.springpoint.springcore.SpringPlugin;
+import ml.springpoint.springcore.module.ModuleFeature;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,10 +28,13 @@ import java.util.Map;
  */
 public class FeatureManager {
 
+    SpringPlugin plugin;
     Map<String, Feature> featureMap;
 
-    public FeatureManager() {
+    public FeatureManager(SpringPlugin plugin) {
+        this.plugin = plugin;
         featureMap = new HashMap<>();
+        featureMap.put("modules", new ModuleFeature(plugin));
     }
 
     /**

@@ -31,7 +31,7 @@ public class SpringPlugin extends JavaPlugin {
         if(!getDataFolder().exists()) getDataFolder().mkdir();
 
         // Load all of the features
-        featureManager = new FeatureManager();
+        featureManager = new FeatureManager(this);
 
         if (!enable()) {
             this.setEnabled(false);
