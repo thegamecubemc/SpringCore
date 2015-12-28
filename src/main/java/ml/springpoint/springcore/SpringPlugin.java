@@ -1,11 +1,14 @@
 package ml.springpoint.springcore;
 
 import ml.springpoint.springcore.feature.FeatureManager;
+import ml.springpoint.springcore.json.JsonConfig;
+import ml.springpoint.springcore.json.JsonMessages;
 import ml.springpoint.springcore.utils.Txt;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -20,6 +23,8 @@ public class SpringPlugin extends JavaPlugin {
 
     private FeatureManager featureManager;
     private String logPrefix;
+    private JsonConfig config;
+    private JsonMessages messages;
 
     // > Enable
 
@@ -28,7 +33,9 @@ public class SpringPlugin extends JavaPlugin {
         setLogPrefix("&8[&2" + getDescription().getName() + "&8]&r"); // Default log prefix
 
         // Create the data folder if it doesn't exist already (/plugins/<plugin name>)
-        if(!getDataFolder().exists()) getDataFolder().mkdir();
+        if (!getDataFolder().exists()) getDataFolder().mkdir();
+        config = new JsonConfig(this, new File(getDataFolder(), "config.json"));
+        messages = new JsonMessages(this, new File(getDataFolder(), "messages.json"));
 
         // Load all of the features
         featureManager = new FeatureManager(this);
@@ -48,6 +55,10 @@ public class SpringPlugin extends JavaPlugin {
      * call the {@link SpringPlugin#use(String...)} method first, so that any additional
      * parts of the API that you will be using can be initialized. You would get all
      * the instances of these features' classes from the FeatureManager using {@link}
+     * <p/>
+     * In addition, if you plan to have a configuration or localization file for
+     * your plugin, you would add the defaults and call <code>getConfiguration().load()</code>
+     * or <code>getMessages().load()</code> here. <b>They will not be created otherwise!</b>
      *
      * @return true if the enable was successful, false otherwise. If this is false,
      * the plugin will be set to not enabled, and will not continue to function.
@@ -102,6 +113,14 @@ public class SpringPlugin extends JavaPlugin {
 
     // > Getters and setters
 
+    public JsonConfig getConfiguration() {
+        return config;
+    }
+
+    public JsonMessages getMessages() {
+        return messages;
+    }
+
     public FeatureManager getFeatureManager() {
         return featureManager;
     }
@@ -109,4 +128,5 @@ public class SpringPlugin extends JavaPlugin {
     protected void setLogPrefix(String logPrefix) {
         this.logPrefix = logPrefix;
     }
+
 }
