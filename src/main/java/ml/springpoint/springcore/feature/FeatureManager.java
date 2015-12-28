@@ -19,6 +19,7 @@ package ml.springpoint.springcore.feature;
 
 import ml.springpoint.springcore.SpringPlugin;
 import ml.springpoint.springcore.command.CommandFeature;
+import ml.springpoint.springcore.integration.IntegrationFeature;
 import ml.springpoint.springcore.menu.MenuFeature;
 import ml.springpoint.springcore.module.ModuleFeature;
 
@@ -50,6 +51,10 @@ import java.util.Map;
  * <td>Menus</td>
  * <td>Easily create chest GUIs using AmpMenus by ampayne2.</td>
  * </tr>
+ * <tr>
+ * <td>Integration</td>
+ * <td>Integrate with various plugins. Right now, the only supported plugin is Vault.</td>
+ * </tr>
  * </table>
  *
  * @author SirFaizdat
@@ -66,6 +71,7 @@ public class FeatureManager {
         featureMap.put("modules", new ModuleFeature(plugin));
         featureMap.put("commands", new CommandFeature(plugin));
         featureMap.put("menus", new MenuFeature(plugin));
+        featureMap.put("integration", new IntegrationFeature(plugin));
     }
 
     /**
