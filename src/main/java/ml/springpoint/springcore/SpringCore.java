@@ -22,4 +22,20 @@ package ml.springpoint.springcore;
  */
 public class SpringCore extends SpringPlugin {
 
+    private static SpringCore instance;
+
+    @Override
+    protected boolean enable() {
+        instance = this;
+        // All we do in the enable method is add some global messages.
+        getMessages().addDefault("no-permission", "&cError: &7You need the permission &c%s&7 to do that.");
+        getMessages().addDefault("must-be-player", "&cError: &7You must be in-game to use this command.");
+        getMessages().addDefault("incorrect-usage", "&cError: &7Incorrect usage. Use the command like this: &c%s");
+        getMessages().addDefault("command-not-found", "&cError: &7That command does not exist or is not handled.");
+        return getMessages().load();
+    }
+
+    public static SpringCore get() {
+        return instance;
+    }
 }
