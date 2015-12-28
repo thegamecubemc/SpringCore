@@ -22,9 +22,6 @@ package ml.springpoint.springcore;
  */
 public class SpringCore extends SpringPlugin {
 
-    // TODO: 12/28/15 HUD API
-    // TODO: 12/28/15 Particle API
-
     private static SpringCore instance;
 
     @Override
