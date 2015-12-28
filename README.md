@@ -7,6 +7,7 @@ Core library for all of Springpoint Network's plugins.
 * Inventory GUIs
 * Particle API
 * Heads-up Display API
+* Integration API
 
 ## Third-party Libraries Used
 * CommandFramework by minnymin3

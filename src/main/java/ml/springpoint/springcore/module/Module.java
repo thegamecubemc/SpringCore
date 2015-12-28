@@ -88,7 +88,7 @@ public abstract class Module {
      * @param msg  The message
      * @param args The arguments to insert into {@link String#format(String, Object...)}
      */
-    public void log(String msg, String... args) {
+    public void log(String msg, Object... args) {
         msg = "&7<" + getName() + "> " + msg;
         getParentPlugin().log(msg, args);
     }
