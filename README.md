@@ -4,3 +4,4 @@ SpringCore is the foundation for the Springpoint Network's plugin ecosystem. It 
 
 ## Third-party Libraries Used
 * CommandFramework by minnymin3
+* AmpMenus by ampayne2

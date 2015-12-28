@@ -19,6 +19,7 @@ package ml.springpoint.springcore.feature;
 
 import ml.springpoint.springcore.SpringPlugin;
 import ml.springpoint.springcore.command.CommandFeature;
+import ml.springpoint.springcore.menu.MenuFeature;
 import ml.springpoint.springcore.module.ModuleFeature;
 
 import java.util.HashMap;
@@ -45,6 +46,10 @@ import java.util.Map;
  * standards, you are required to use this library rather than Bukkit's library if you
  * wish to add commands, or you will fail the code review.</td>
  * </tr>
+ * <tr>
+ * <td>Menus</td>
+ * <td>Easily create chest GUIs using AmpMenus by ampayne2.</td>
+ * </tr>
  * </table>
  *
  * @author SirFaizdat
@@ -60,6 +65,7 @@ public class FeatureManager {
         featureMap = new HashMap<>();
         featureMap.put("modules", new ModuleFeature(plugin));
         featureMap.put("commands", new CommandFeature(plugin));
+        featureMap.put("menus", new MenuFeature(plugin));
     }
 
     /**
@@ -69,7 +75,7 @@ public class FeatureManager {
      *             exist or the name is incorrect, this will throw a NullPointerException.
      */
     public void use(String name) {
-        featureMap.get(name).init();
+        featureMap.get(name.toLowerCase()).init();
     }
 
     /**
@@ -87,7 +93,7 @@ public class FeatureManager {
      * For example, if you called <code>get("modules");</code>, you would cast it to {@link ModuleFeature}.
      */
     public Feature get(String name) {
-        return featureMap.get(name);
+        return featureMap.get(name.toLowerCase());
     }
 
 }
