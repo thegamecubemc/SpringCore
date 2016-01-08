@@ -44,7 +44,7 @@ public class IntegrationFeature implements Feature {
 
     @Override
     public void init() {
-        integration.put("vault", new VaultIntegration());
+        add("vault", new VaultIntegration());
     }
 
     @Override
@@ -75,6 +75,11 @@ public class IntegrationFeature implements Feature {
 
     public IntegrationAbstract get(String name) {
         return integration.get(name);
+    }
+
+    public IntegrationFeature add(String name, IntegrationAbstract integrationObject) {
+        integration.put(name, integrationObject);
+        return this;
     }
 
 }
